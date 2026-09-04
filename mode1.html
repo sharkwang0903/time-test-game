@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="自由選擇時間，測試你的時間直覺有多準。">
+    <meta name="theme-color" content="#f3f1ea">
+    <title>你的時間感有多準？｜1 秒鐘到底有多長？</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js" defer></script>
+    <script src="js/mode1.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+
+    <header class="site-header page-width">
+      <a class="site-name" href="index.html">
+        <span aria-hidden="true">←</span>
+        <span>1 秒鐘到底有多長？</span>
+      </a>
+      <span class="site-note">MODE 01</span>
+    </header>
+
+    <main id="main-content" class="page-shell page-width game-page" tabindex="-1">
+      <div class="play-stage">
+        <section id="setup-panel" class="game-panel setup-panel" aria-labelledby="mode-title">
+          <p class="eyebrow">模式一 · 自由練習</p>
+          <h1 id="mode-title">你的時間感有多準？</h1>
+          <p class="lead">選一個時間。按下開始之後，只剩你和自己的直覺。</p>
+
+          <fieldset class="time-picker">
+            <legend>想挑戰幾秒？</legend>
+            <div class="time-options">
+              <label class="time-option">
+                <input type="radio" name="target-time" value="1" checked>
+                <span>1 <small>秒</small></span>
+              </label>
+              <label class="time-option">
+                <input type="radio" name="target-time" value="3">
+                <span>3 <small>秒</small></span>
+              </label>
+              <label class="time-option">
+                <input type="radio" name="target-time" value="5">
+                <span>5 <small>秒</small></span>
+              </label>
+              <label class="time-option">
+                <input type="radio" name="target-time" value="10">
+                <span>10 <small>秒</small></span>
+              </label>
+              <label class="time-option">
+                <input type="radio" name="target-time" value="30">
+                <span>30 <small>秒</small></span>
+              </label>
+              <label class="time-option">
+                <input type="radio" name="target-time" value="60">
+                <span>60 <small>秒</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <button id="start-button" class="button button--primary" type="button">開始</button>
+          <p class="helper-text">若超過目標時間 5 秒仍未按下，這一回合會自動結束。</p>
+        </section>
+
+        <section id="timing-panel" class="game-panel timing-panel" aria-label="計時進行中" hidden>
+          <button id="stop-button" class="now-button" type="button">就是現在</button>
+        </section>
+
+        <section id="result-panel" class="game-panel result-panel" aria-labelledby="result-title" hidden>
+          <p class="eyebrow">本次結果</p>
+          <h1 id="result-title" tabindex="-1">你的時間感</h1>
+          <p id="result-comment" class="result-comment"></p>
+
+          <dl class="result-metrics">
+            <div class="metric-row">
+              <dt>目標時間</dt>
+              <dd><span id="result-target">—</span> 秒</dd>
+            </div>
+            <div id="actual-row" class="metric-row">
+              <dt>你的時間</dt>
+              <dd><span id="result-actual">—</span> 秒</dd>
+            </div>
+            <div id="error-row" class="metric-row">
+              <dt>絕對誤差</dt>
+              <dd><span id="result-error">—</span> 秒</dd>
+            </div>
+            <div id="ratio-row" class="metric-row">
+              <dt>誤差比率</dt>
+              <dd><span id="result-ratio">—</span>%</dd>
+            </div>
+            <div id="status-row" class="metric-row" hidden>
+              <dt>狀態</dt>
+              <dd>Timeout</dd>
+            </div>
+          </dl>
+
+          <p id="result-relation" class="result-relation"></p>
+
+          <div class="action-row">
+            <button id="retry-button" class="button button--primary" type="button">再玩一次</button>
+            <a class="button button--secondary" href="index.html">回到首頁</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="page-footer page-width">
+      <span>別數拍子，聽聽你的直覺。</span>
+      <span aria-hidden="true">MODE 01 / 02</span>
+    </footer>
+  </body>
+</html>

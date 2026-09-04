@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="用五個關卡，測試你的時間感能維持多久。">
+    <meta name="theme-color" content="#f3f1ea">
+    <title>時間感階梯｜1 秒鐘到底有多長？</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/common.js" defer></script>
+    <script src="js/mode2.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要內容</a>
+
+    <header class="site-header page-width">
+      <a class="site-name" href="index.html">
+        <span aria-hidden="true">←</span>
+        <span>1 秒鐘到底有多長？</span>
+      </a>
+      <span class="site-note">MODE 02</span>
+    </header>
+
+    <main id="main-content" class="page-shell page-width game-page" tabindex="-1">
+      <div class="play-stage">
+        <section id="intro-panel" class="game-panel challenge-intro" aria-labelledby="mode-title">
+          <p class="eyebrow">模式二 · 五關挑戰</p>
+          <h1 id="mode-title">時間感階梯</h1>
+          <p class="lead">五關，49 秒。看看你的時間感能撐多久。</p>
+
+          <ol class="round-path" aria-label="五個關卡依序為 1、3、5、10 與 30 秒">
+            <li><span>1</span><small>秒</small></li>
+            <li><span>3</span><small>秒</small></li>
+            <li><span>5</span><small>秒</small></li>
+            <li><span>10</span><small>秒</small></li>
+            <li><span>30</span><small>秒</small></li>
+          </ol>
+
+          <button id="challenge-button" class="button button--primary" type="button">開始挑戰</button>
+          <p class="helper-text">每關作答後不會立刻揭曉結果，五關完成後才會一起公布。</p>
+        </section>
+
+        <section id="ready-panel" class="game-panel ready-panel" aria-labelledby="round-target" hidden>
+          <p class="round-count">ROUND <span id="round-number">1</span> / 5</p>
+          <h1 id="round-target">目標：<span id="target-seconds">1</span> 秒</h1>
+          <p>記住這個數字。開始後，它就會消失。</p>
+          <button id="round-start-button" class="button button--primary" type="button" aria-label="開始第一關，目標 1 秒">開始</button>
+        </section>
+
+        <section id="timing-panel" class="game-panel timing-panel" aria-label="計時進行中" hidden>
+          <button id="stop-button" class="now-button" type="button">就是現在</button>
+        </section>
+
+        <section id="interlude-panel" class="game-panel interlude-panel" aria-labelledby="interlude-title" hidden>
+          <p class="eyebrow">已記錄</p>
+          <h1 id="interlude-title" tabindex="-1">第一關完成</h1>
+          <p id="interlude-note">下一關即將開始。</p>
+        </section>
+
+        <section id="results-panel" class="game-panel challenge-results" aria-labelledby="results-title" hidden>
+          <p class="eyebrow">五關完成</p>
+          <h1 id="results-title" tabindex="-1">你的時間感分數</h1>
+          <p class="total-score"><span id="total-score">0.0000</span> <small>/ 100</small></p>
+          <p id="score-comment" class="result-comment"></p>
+
+          <div id="round-results" class="round-results"></div>
+
+          <div class="action-row">
+            <button id="replay-button" class="button button--primary" type="button">再玩一次</button>
+            <a class="button button--secondary" href="index.html">回到首頁</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="page-footer page-width">
+      <span>五次直覺，最後才看答案。</span>
+      <span aria-hidden="true">MODE 02 / 02</span>
+    </footer>
+  </body>
+</html>
