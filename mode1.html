@@ -58,8 +58,25 @@
             </div>
           </fieldset>
 
-          <button id="start-button" class="button button--primary" type="button">開始</button>
+          <button id="start-button" class="button button--primary" type="button">進入挑戰</button>
           <p class="helper-text">若超過目標時間 5 秒仍未按下，這一回合會自動結束。</p>
+        </section>
+
+        <section id="ready-panel" class="game-panel ready-panel mode1-ready-panel" aria-labelledby="ready-title" hidden>
+          <p class="eyebrow">模式一 · 準備階段</p>
+          <h1 id="ready-title"><span id="ready-target">1</span> 秒挑戰</h1>
+          <p class="lead">準備好了嗎？</p>
+
+          <div class="preparation-notes">
+            <p>按下開始後，計時會立刻開始。</p>
+            <p>接下來畫面不會顯示任何時間資訊。</p>
+            <p>靠自己的感覺就好。</p>
+          </div>
+
+          <div class="action-row preparation-actions">
+            <button id="ready-start-button" class="button button--primary" type="button" aria-label="開始第一秒挑戰">準備好了，開始</button>
+            <button id="back-to-selection-button" class="button button--secondary" type="button">返回選擇</button>
+          </div>
         </section>
 
         <section id="timing-panel" class="game-panel timing-panel" aria-label="計時進行中" hidden>

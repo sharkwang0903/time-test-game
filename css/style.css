@@ -628,6 +628,26 @@ a {
   margin-top: 1.7rem;
 }
 
+.preparation-notes {
+  max-width: 33rem;
+  margin: 2.25rem auto 0;
+  padding: 1.15rem 0;
+  border-block: 1px solid var(--line);
+}
+
+.preparation-notes p {
+  margin: 0.18rem 0;
+  color: var(--muted);
+}
+
+.preparation-actions {
+  margin-top: 2rem;
+}
+
+.preparation-actions .button {
+  margin-top: 0;
+}
+
 .total-score {
   margin: 1.15rem 0 0;
   color: var(--accent-dark);

@@ -2,11 +2,14 @@
   "use strict";
 
   const setupPanel = document.querySelector("#setup-panel");
+  const readyPanel = document.querySelector("#ready-panel");
   const timingPanel = document.querySelector("#timing-panel");
   const resultPanel = document.querySelector("#result-panel");
-  const panels = [setupPanel, timingPanel, resultPanel];
+  const panels = [setupPanel, readyPanel, timingPanel, resultPanel];
 
   const startButton = document.querySelector("#start-button");
+  const readyStartButton = document.querySelector("#ready-start-button");
+  const backToSelectionButton = document.querySelector("#back-to-selection-button");
   const stopButton = document.querySelector("#stop-button");
   const retryButton = document.querySelector("#retry-button");
   const resultTitle = document.querySelector("#result-title");
@@ -21,6 +24,7 @@
   const errorRow = document.querySelector("#error-row");
   const ratioRow = document.querySelector("#ratio-row");
   const statusRow = document.querySelector("#status-row");
+  const readyTarget = document.querySelector("#ready-target");
 
   let state = "setup";
   let targetTime = 1;
@@ -35,18 +39,30 @@
     }
   }
 
-  function startRound() {
-    if (state !== "setup") {
+  function enterChallenge(event) {
+    if (state !== "setup" || event.detail > 1) {
       return;
     }
 
     const selectedTarget = document.querySelector('input[name="target-time"]:checked');
     targetTime = Number(selectedTarget.value);
-    state = "timing";
+    readyTarget.textContent = String(targetTime);
+    readyStartButton.setAttribute("aria-label", "開始" + targetTime + "秒挑戰");
+    state = "ready";
+    TimeSense.setTimingMode(false);
+    TimeSense.showOnly(panels, readyPanel);
+    readyStartButton.focus({ preventScroll: true });
+  }
+
+  function startRound(event) {
+    if (state !== "ready" || event.detail > 1) {
+      return;
+    }
 
     // The measured round starts at the Start button click.
     startTimestamp = performance.now();
     deadlineTimestamp = startTimestamp + (targetTime + 5) * 1000;
+    state = "timing";
     TimeSense.setTimingMode(true);
     TimeSense.showOnly(panels, timingPanel);
     stopButton.focus({ preventScroll: true });
@@ -139,10 +155,22 @@
 
   function resetRound() {
     clearRoundTimer();
-    state = "setup";
     startTimestamp = null;
     deadlineTimestamp = null;
+    state = "ready";
     TimeSense.setTimingMode(false);
+    readyTarget.textContent = String(targetTime);
+    readyStartButton.setAttribute("aria-label", "開始" + targetTime + "秒挑戰");
+    TimeSense.showOnly(panels, readyPanel);
+    readyStartButton.focus({ preventScroll: true });
+  }
+
+  function backToSelection() {
+    if (state !== "ready") {
+      return;
+    }
+
+    state = "setup";
     TimeSense.showOnly(panels, setupPanel);
     startButton.focus({ preventScroll: true });
   }
@@ -153,7 +181,10 @@
     }
   }
 
-  startButton.addEventListener("click", startRound);
+  startButton.addEventListener("click", enterChallenge);
+  readyStartButton.addEventListener("click", startRound);
+  readyStartButton.addEventListener("keydown", preventRepeatedKeyActivation);
+  backToSelectionButton.addEventListener("click", backToSelection);
   stopButton.addEventListener("click", stopRound);
   stopButton.addEventListener("keydown", preventRepeatedKeyActivation);
   retryButton.addEventListener("click", resetRound);
